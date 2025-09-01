@@ -1,5 +1,4 @@
-
-import * as firebaseApp from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import { 
   getFirestore, collection, getDocs, doc, setDoc, addDoc, updateDoc, deleteDoc,
   query, where, orderBy, limit, writeBatch, getDoc, DocumentData, Timestamp, runTransaction
@@ -20,7 +19,8 @@ const firebaseConfig = {
 };
 
 // Firebase 초기화
-const app = firebaseApp.initializeApp(firebaseConfig);
+// FIX: Correctly initialize Firebase by using a direct import for initializeApp, as required by Firebase v9+ modular SDK.
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 

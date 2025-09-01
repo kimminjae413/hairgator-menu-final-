@@ -1,5 +1,4 @@
-
-import * as firebaseApp from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import { 
   getFirestore, collection, getDocs, doc, setDoc, addDoc, updateDoc, deleteDoc,
   query, where, orderBy, limit, writeBatch, getDoc, DocumentData, Timestamp, runTransaction
@@ -20,8 +19,8 @@ const firebaseConfig = {
 };
 
 // Firebase 초기화
-// Fix: Use the namespaced import to call initializeApp, resolving the module export error.
-const app = firebaseApp.initializeApp(firebaseConfig);
+// FIX: The `initializeApp` function should be imported directly from 'firebase/app' and called, not accessed as a property on a namespace import. This resolves the module export error.
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
